@@ -43,3 +43,10 @@ models/
 .credentials
 secrets.toml
 *.json
+<<<<<<< HEAD
+
+# User defined extras
+# Complete to your desire
+
+=======
+>>>>>>> 2a8f97f48524bb720d7c543563200a228c14fa90
