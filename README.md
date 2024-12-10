@@ -16,3 +16,6 @@ pyenv local risky_predictive_policing
 
 4. Include the Chicago Crimes dataset into raw_data' folder that was just created:
 'chicago.csv'
+
+Run install requirements:
+pip install -r requirements.txt
