@@ -1,0 +1,122 @@
+2024-12-12 17:23:01,218 - INFO - Model successfully loaded
+2024-12-12 17:23:01,252 - INFO - Model successfully loaded
+2024-12-12 17:23:08,287 - INFO - Model successfully loaded
+2024-12-12 17:23:09,352 - INFO - Model successfully loaded
+2024-12-12 17:23:09,381 - INFO - Model successfully loaded
+2024-12-12 17:23:15,314 - INFO - Received input features: ['43', 5.0, 0.707, -0.707, 1, 41.8781, -87.6298]
+2024-12-12 17:23:15,315 - INFO - Prediction successful: 7
+2024-12-12 17:23:19,078 - INFO - Received input features: ['3', 5.0, 0.707, -0.707, 1, 41.8781, -87.6298]
+2024-12-12 17:23:19,080 - INFO - Prediction successful: 7
+2024-12-12 17:23:29,056 - INFO - Received input features: ['NORTH', 0.5, 0.707, -0.707, 1, 41.8781, -87.6298]
+2024-12-12 17:23:29,056 - ERROR - Prediction error: could not convert string to float: np.str_('NORTH')
+Traceback (most recent call last):
+  File "/Users/jackylui/code/soulseekqt/Projects/risky_predictive_policing/ml_logic/main.py", line 87, in predict_offense
+    prediction = ml_model.predict(input_array)[0]
+  File "/Users/jackylui/.pyenv/versions/risky_predictive_policing/lib/python3.10/site-packages/sklearn/tree/_classes.py", line 529, in predict
+    X = self._validate_X_predict(X, check_input)
+  File "/Users/jackylui/.pyenv/versions/risky_predictive_policing/lib/python3.10/site-packages/sklearn/tree/_classes.py", line 489, in _validate_X_predict
+    X = self._validate_data(
+  File "/Users/jackylui/.pyenv/versions/risky_predictive_policing/lib/python3.10/site-packages/sklearn/base.py", line 633, in _validate_data
+    out = check_array(X, input_name="X", **check_params)
+  File "/Users/jackylui/.pyenv/versions/risky_predictive_policing/lib/python3.10/site-packages/sklearn/utils/validation.py", line 1012, in check_array
+    array = _asarray_with_order(array, order=order, dtype=dtype, xp=xp)
+  File "/Users/jackylui/.pyenv/versions/risky_predictive_policing/lib/python3.10/site-packages/sklearn/utils/_array_api.py", line 745, in _asarray_with_order
+    array = numpy.asarray(array, order=order, dtype=dtype)
+ValueError: could not convert string to float: np.str_('NORTH')
+2024-12-12 17:23:33,114 - INFO - Received input features: ['6', 0.5, 0.707, -0.707, 1, 41.8781, -87.6298]
+2024-12-12 17:23:33,114 - INFO - Prediction successful: 1
+2024-12-12 17:24:09,130 - INFO - Received input features: ['3', 5.0, 0.707, -0.707, 1, 41.8781, -87.6298]
+2024-12-12 17:24:09,131 - INFO - Prediction successful: 7
+2024-12-12 17:25:10,905 - INFO - Model successfully loaded
+2024-12-12 17:25:10,957 - INFO - Model successfully loaded
+2024-12-12 17:25:15,954 - INFO - Model successfully loaded
+2024-12-12 17:25:16,896 - INFO - Model successfully loaded
+2024-12-12 17:25:16,918 - INFO - Model successfully loaded
+2024-12-12 17:25:24,630 - INFO - Processed input features: ['3', 5.0, 0.707, -0.707, 1, 41.8781, -87.6298]
+2024-12-12 17:25:24,635 - INFO - Prediction successful: 7
+2024-12-12 17:25:28,217 - INFO - Processed input features: ['7', 5.0, 0.707, -0.707, 1, 41.8781, -87.6298]
+2024-12-12 17:25:28,218 - INFO - Prediction successful: 7
+2024-12-12 17:25:38,327 - INFO - Processed input features: ['7', 5.0, 0.5, -0.707, 1, 41.8781, -87.6298]
+2024-12-12 17:25:38,328 - INFO - Prediction successful: 7
+2024-12-12 17:25:42,965 - INFO - Processed input features: ['7', 5.0, 0.5, -0.707, 1, 35.8781, -87.6298]
+2024-12-12 17:25:42,967 - INFO - Prediction successful: 7
+2024-12-12 17:25:52,583 - INFO - Processed input features: ['77', 5.0, 0.5, -0.707, 1, 35.8781, -87.6298]
+2024-12-12 17:25:52,583 - INFO - Prediction successful: 7
+2024-12-12 17:25:59,779 - INFO - Processed input features: ['2', 5.0, 0.5, -0.707, 1, 35.8781, -87.6298]
+2024-12-12 17:25:59,780 - INFO - Prediction successful: 7
+2024-12-12 17:26:28,518 - INFO - Processed input features: ['6', 0.5, 0.707, -0.707, 1, 41.8781, -87.6298]
+2024-12-12 17:26:28,519 - INFO - Prediction successful: 1
+2024-12-12 17:26:35,644 - INFO - Processed input features: ['3', 5.0, 0.707, -0.707, 1, 41.8781, -87.6298]
+2024-12-12 17:26:35,645 - INFO - Prediction successful: 7
+2024-12-12 17:26:42,751 - INFO - Processed input features: ['8', 5.0, 0.707, -0.707, 1, 41.8781, -87.6298]
+2024-12-12 17:26:42,752 - INFO - Prediction successful: 7
+2024-12-12 17:26:52,850 - INFO - Processed input features: ['6', 0.5, 0.707, -0.707, 1, 41.8781, -87.6298]
+2024-12-12 17:26:52,851 - INFO - Prediction successful: 1
+2024-12-12 17:27:04,568 - INFO - Processed input features: ['8', 4.0, 0.707, -0.707, 1, 41.8781, -87.6298]
+2024-12-12 17:27:04,569 - INFO - Prediction successful: 7
+2024-12-12 17:27:19,023 - INFO - Processed input features: ['6', 0.5, 0.707, -0.707, 1, 41.8781, -87.6298]
+2024-12-12 17:27:19,024 - INFO - Prediction successful: 1
+2024-12-12 17:27:20,223 - INFO - Processed input features: ['6', 0.5, 0.707, -0.707, 1, 41.8781, -87.6298]
+2024-12-12 17:27:20,225 - INFO - Prediction successful: 1
+2024-12-12 17:27:24,619 - INFO - Processed input features: ['6', 2.0, 0.707, -0.707, 1, 41.8781, -87.6298]
+2024-12-12 17:27:24,619 - INFO - Prediction successful: 7
+2024-12-12 17:27:28,213 - INFO - Processed input features: ['8', 2.0, 0.707, -0.707, 1, 41.8781, -87.6298]
+2024-12-12 17:27:28,214 - INFO - Prediction successful: 7
+2024-12-12 17:29:29,933 - INFO - Model successfully loaded
+2024-12-12 17:29:29,987 - INFO - Model successfully loaded
+2024-12-12 17:29:37,719 - INFO - Processed input features: ['3', 1, 0.707, -0.707, 1, 41.8781, -87.6298]
+2024-12-12 17:29:37,720 - INFO - Prediction successful: 7
+2024-12-12 17:29:56,325 - INFO - Model successfully loaded
+2024-12-12 17:29:56,358 - INFO - Model successfully loaded
+2024-12-12 17:29:58,004 - INFO - Processed input features: ['3', 1, 0.707, -0.707, 1, 41.8781, -87.6298]
+2024-12-12 17:29:58,005 - INFO - Prediction successful: 7
+2024-12-12 17:32:01,281 - INFO - Model successfully loaded
+2024-12-12 17:32:01,312 - INFO - Model successfully loaded
+2024-12-12 17:32:55,605 - INFO - Processed input features: ['6', 0, 0.0, 1.0, 1, 41.8781, -87.6298]
+2024-12-12 17:32:55,617 - INFO - Prediction successful: 5
+2024-12-12 17:32:57,458 - INFO - Processed input features: ['6', 0, 0.0, 1.0, 1, 41.8781, -87.6298]
+2024-12-12 17:32:57,459 - INFO - Prediction successful: 5
+2024-12-12 17:33:37,883 - INFO - Processed input features: ['6', 5, 0.0, 1.0, 0, 41.8781, -87.6298]
+2024-12-12 17:33:37,884 - INFO - Prediction successful: 7
+2024-12-12 17:33:54,028 - INFO - Model successfully loaded
+2024-12-12 17:33:54,058 - INFO - Model successfully loaded
+2024-12-12 17:34:54,540 - ERROR - Input conversion error: Weekend must be 'yes' or 'no'
+Traceback (most recent call last):
+  File "/Users/jackylui/code/soulseekqt/Projects/risky_predictive_policing/ml_logic/main.py", line 103, in predict_offense
+    raise ValueError("Weekend must be 'yes' or 'no'")
+ValueError: Weekend must be 'yes' or 'no'
+2024-12-12 17:35:12,877 - INFO - Processed input features: ['6', 5, 0.0, 1.0, 1, 41.8781, -87.6298]
+2024-12-12 17:35:12,878 - INFO - Prediction successful: 7
+2024-12-12 17:35:20,994 - INFO - Model successfully loaded
+2024-12-12 17:35:21,027 - INFO - Model successfully loaded
+2024-12-12 17:36:49,770 - INFO - Model successfully loaded
+2024-12-12 17:36:49,801 - INFO - Model successfully loaded
+2024-12-12 17:36:49,805 - INFO - Processed input features: ['6', 5, 0.0, 1.0, 1, 41.8781, -87.6298]
+2024-12-12 17:36:49,805 - INFO - Prediction successful: 7
+2024-12-12 17:36:54,862 - INFO - Processed input features: ['6', 5, 0.0, 1.0, 1, 41.8781, -87.6298]
+2024-12-12 17:36:54,863 - INFO - Prediction successful: 7
+2024-12-12 17:44:01,020 - INFO - Model successfully loaded
+2024-12-12 17:44:01,058 - INFO - Model successfully loaded
+2024-12-12 17:45:18,612 - INFO - Model successfully loaded
+2024-12-12 17:45:18,638 - INFO - Model successfully loaded
+2024-12-12 17:45:29,372 - INFO - Model successfully loaded
+2024-12-12 17:45:36,233 - INFO - Processed input features: ['6', 5, 0.0, 1.0, 1, 41.8781, -87.6298]
+2024-12-12 17:45:36,233 - INFO - Prediction successful: 7
+2024-12-13 10:30:33,329 - INFO - Model successfully loaded
+2024-12-13 10:30:33,361 - INFO - Model successfully loaded
+2024-12-13 10:39:42,625 - INFO - Model successfully loaded
+2024-12-13 10:39:52,796 - INFO - Model successfully loaded
+2024-12-13 10:39:53,734 - INFO - Model successfully loaded
+2024-12-13 10:39:53,765 - INFO - Model successfully loaded
+2024-12-13 10:52:01,524 - INFO - Model successfully loaded
+2024-12-13 10:54:22,640 - INFO - Processed input features: ['6', 0, 0.0, 1.0, 1, 41.8781, -87.6298]
+2024-12-13 10:54:22,643 - INFO - Prediction successful: 5
+2024-12-13 10:58:25,750 - INFO - Processed input features: ['6', 0, 0.0, 1.0, 1, 41.8781, -87.6298]
+2024-12-13 10:58:25,752 - INFO - Prediction successful: 5
+2024-12-13 10:58:40,346 - INFO - Processed input features: ['6', 0, 0.0, 1.0, 1, 41.8781, -87.6298]
+2024-12-13 10:58:40,347 - INFO - Prediction successful: 5
+2024-12-13 12:35:10,187 - INFO - Model successfully loaded
+2024-12-13 12:35:11,125 - INFO - Model successfully loaded
+2024-12-13 12:35:11,157 - INFO - Model successfully loaded
+2024-12-13 12:35:30,185 - INFO - Processed input features: ['6', 0, 0.0, 1.0, 1, 41.8781, -87.6298]
+2024-12-13 12:35:30,189 - INFO - Prediction successful: 5
