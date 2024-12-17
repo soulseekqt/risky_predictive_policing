@@ -1,13 +1,5 @@
-pytest
-pylint
-ipdb
-jupyterlab
-numpy
-pandas
-matplotlib
-seaborn
-scikit-learn
-# API
-fastapi         # API framework
-pytz            # time zone management
-uvicorn         # web server
+fastapi==0.115.6
+numpy==2.2.0
+pandas==2.2.3
+pydantic==2.10.3
+uvicorn==0.34.0

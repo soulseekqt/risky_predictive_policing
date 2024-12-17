@@ -1,0 +1,19 @@
+2024-12-17 13:03:02,146 - ERROR - File not found: [Errno 2] No such file or directory: '/Users/jackylui/code/soulseekqt/Projects/risky_predictive_policing/ml_logic/label_encoder.pkl'
+2024-12-17 13:03:02,927 - ERROR - File not found: [Errno 2] No such file or directory: '/Users/jackylui/code/soulseekqt/Projects/risky_predictive_policing/ml_logic/label_encoder.pkl'
+2024-12-17 13:03:02,947 - ERROR - model.pkl not found. Please ensure the model file is in the correct directory.
+2024-12-17 13:05:38,235 - ERROR - File not found: [Errno 2] No such file or directory: '/Users/jackylui/code/soulseekqt/Projects/risky_predictive_policing/ml_logic/label_encoder.pkl'
+2024-12-17 13:05:38,246 - ERROR - model.pkl not found. Please ensure the model file is in the correct directory.
+2024-12-17 13:06:05,205 - ERROR - File not found: [Errno 2] No such file or directory: '/Users/jackylui/code/soulseekqt/Projects/risky_predictive_policing/ml_logic/label_encoder.pkl'
+2024-12-17 13:06:05,679 - ERROR - File not found: [Errno 2] No such file or directory: '/Users/jackylui/code/soulseekqt/Projects/risky_predictive_policing/ml_logic/label_encoder.pkl'
+2024-12-17 13:06:05,691 - ERROR - model.pkl not found. Please ensure the model file is in the correct directory.
+2024-12-17 13:07:08,668 - ERROR - File not found: [Errno 2] No such file or directory: '/Users/jackylui/code/soulseekqt/Projects/risky_predictive_policing/ml_logic/label_encoder.pkl'
+2024-12-17 13:07:09,181 - ERROR - File not found: [Errno 2] No such file or directory: '/Users/jackylui/code/soulseekqt/Projects/risky_predictive_policing/ml_logic/label_encoder.pkl'
+2024-12-17 13:07:09,194 - ERROR - model.pkl not found. Please ensure the model file is in the correct directory.
+2024-12-17 13:08:05,901 - ERROR - File not found: [Errno 2] No such file or directory: '/Users/jackylui/code/soulseekqt/Projects/risky_predictive_policing/ml_logic/label_encoder.pkl'
+2024-12-17 13:08:05,913 - ERROR - model.pkl not found. Please ensure the model file is in the correct directory.
+2024-12-17 13:08:25,860 - ERROR - File not found: [Errno 2] No such file or directory: '/Users/jackylui/code/soulseekqt/Projects/risky_predictive_policing/ml_logic/label_encoder.pkl'
+2024-12-17 13:08:26,338 - ERROR - File not found: [Errno 2] No such file or directory: '/Users/jackylui/code/soulseekqt/Projects/risky_predictive_policing/ml_logic/label_encoder.pkl'
+2024-12-17 13:08:26,351 - ERROR - model.pkl not found. Please ensure the model file is in the correct directory.
+2024-12-17 13:10:43,532 - ERROR - File not found: [Errno 2] No such file or directory: '/Users/jackylui/code/soulseekqt/Projects/risky_predictive_policing/ml_logic/label_encoder.pkl'
+2024-12-17 13:10:43,997 - ERROR - File not found: [Errno 2] No such file or directory: '/Users/jackylui/code/soulseekqt/Projects/risky_predictive_policing/ml_logic/label_encoder.pkl'
+2024-12-17 13:10:44,010 - ERROR - model.pkl not found. Please ensure the model file is in the correct directory.
