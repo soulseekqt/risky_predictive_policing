@@ -144,3 +144,24 @@ ValueError: Weekend must be 'yes' or 'no'
 2024-12-17 14:28:52,426 - INFO - Top 5 predicted crimes: {'ASSAULT': 0.22916666666666663, 'BATTERY': 0.2175, 'THEFT OVER $500': 0.18708333333333332, 'MOTOR VEHICLE THEFT': 0.18125, 'CRIMINAL DAMAGE': 0.08583333333333332}
 2024-12-17 14:29:22,745 - INFO - Top 5 predicted crimes: {'BATTERY': 0.36458333333333326, 'ASSAULT': 0.15291666666666667, 'THEFT OVER $500': 0.12708333333333333, 'CRIMINAL DAMAGE': 0.11208333333333333, 'MOTOR VEHICLE THEFT': 0.10791666666666666}
 2024-12-17 14:33:27,481 - INFO - Top 5 predicted crimes: {'BATTERY': 0.36458333333333326, 'ASSAULT': 0.15291666666666667, 'THEFT OVER $500': 0.12708333333333333, 'CRIMINAL DAMAGE': 0.11208333333333333, 'MOTOR VEHICLE THEFT': 0.10791666666666666}
+2024-12-17 15:41:22,268 - ERROR - Error loading model or label encoder: [Errno 2] No such file or directory: '/app/ml_logic/label_encoder.pkl'
+2024-12-17 15:41:22,790 - ERROR - Error loading model or label encoder: [Errno 2] No such file or directory: '/app/ml_logic/label_encoder.pkl'
+2024-12-17 15:41:22,809 - ERROR - Error loading model or label encoder: [Errno 2] No such file or directory: '/app/ml_logic/label_encoder.pkl'
+2024-12-17 15:41:59,206 - INFO - LabelEncoder and Random Forest model successfully loaded
+2024-12-17 15:41:59,241 - ERROR - Error loading model or label encoder: [Errno 2] No such file or directory: '/app/ml_logic/label_encoder.pkl'
+2024-12-17 15:42:09,195 - INFO - LabelEncoder and Random Forest model successfully loaded
+2024-12-17 15:42:10,008 - INFO - LabelEncoder and Random Forest model successfully loaded
+2024-12-17 15:42:10,038 - ERROR - Error loading model or label encoder: [Errno 2] No such file or directory: '/app/ml_logic/label_encoder.pkl'
+2024-12-17 15:42:33,731 - INFO - LabelEncoder and Random Forest model successfully loaded
+2024-12-17 15:42:33,876 - INFO - LabelEncoder and Random Forest model successfully loaded
+2024-12-17 15:42:43,809 - INFO - LabelEncoder and Random Forest model successfully loaded
+2024-12-17 15:42:44,734 - INFO - LabelEncoder and Random Forest model successfully loaded
+2024-12-17 15:42:44,850 - INFO - LabelEncoder and Random Forest model successfully loaded
+2024-12-17 15:42:59,060 - INFO - Top 5 predicted crimes: {'BATTERY': 0.36458333333333326, 'ASSAULT': 0.15291666666666667, 'THEFT OVER $500': 0.12708333333333333, 'CRIMINAL DAMAGE': 0.11208333333333333, 'MOTOR VEHICLE THEFT': 0.10791666666666666}
+2024-12-17 15:43:01,469 - INFO - Top 5 predicted crimes: {'BATTERY': 0.36458333333333326, 'ASSAULT': 0.15291666666666667, 'THEFT OVER $500': 0.12708333333333333, 'CRIMINAL DAMAGE': 0.11208333333333333, 'MOTOR VEHICLE THEFT': 0.10791666666666666}
+2024-12-17 15:43:02,317 - INFO - Top 5 predicted crimes: {'BATTERY': 0.36458333333333326, 'ASSAULT': 0.15291666666666667, 'THEFT OVER $500': 0.12708333333333333, 'CRIMINAL DAMAGE': 0.11208333333333333, 'MOTOR VEHICLE THEFT': 0.10791666666666666}
+2024-12-17 15:43:10,532 - INFO - LabelEncoder and Random Forest model successfully loaded
+2024-12-17 15:43:10,690 - INFO - LabelEncoder and Random Forest model successfully loaded
+2024-12-17 15:44:40,242 - INFO - LabelEncoder and Random Forest model successfully loaded
+2024-12-17 15:44:40,384 - INFO - LabelEncoder and Random Forest model successfully loaded
+2024-12-17 15:45:13,420 - INFO - LabelEncoder and Random Forest model successfully loaded

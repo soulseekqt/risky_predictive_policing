@@ -30,6 +30,9 @@ class UserInput(BaseModel):
 # Initialize FastAPI app
 app = FastAPI(title="Offense Prediction Model")
 
+label_encoder_path = os.path.join(os.path.dirname(__file__), 'ml_logic', 'label_encoder.pkl')
+model_path = os.path.join(os.path.dirname(__file__), 'ml_logic', 'model.pkl')
+
 # Load the LabelEncoder and model
 try:
     label_encoder_path = os.path.join(os.path.dirname(__file__), 'label_encoder.pkl')

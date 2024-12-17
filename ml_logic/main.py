@@ -6,18 +6,8 @@ import numpy as np
 import logging
 import sys
 import math
-
-# #Example query to run on terminal:
-# curl -X POST http://localhost:8000/predict \
-#      -H "Content-Type: application/json" \
-#      -d '{
-#          "ward": "6",
-#          "time_category": "Late Evening",
-#          "date": "2024-01-15",
-#          "weekend": "yes",
-#          "latitude": 41.8781,
-#          "longitude": -87.6298
-#      }'
+import os
+import pandas as pd
 
 # Configure logging
 logging.basicConfig(
@@ -30,123 +20,100 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Predefined mappings for user-friendly inputs
-TIME_CATEGORIES = {
-    "Late Evening": 0,
-    "Early Morning": 1,
-    "Late Morning": 2,
-    "Early Noon": 3,
-    "Late Noon": 4,
-    "Early Evening": 5
-}
-
-WEEKEND_MAPPING = {
-    "yes": 1,
-    "no": 0,
-    "y": 1,
-    "n": 0
-}
-
-def encode_time_category(time_category):
-    """Convert time category to numeric encoding"""
-    return TIME_CATEGORIES.get(time_category.title())
-
-def encode_weekend(weekend):
-    """Convert weekend input to binary"""
-    return WEEKEND_MAPPING.get(weekend.lower())
-
-def encode_month(date):
-    """
-    Convert date to month sine and cosine encoding
-    Assumes date is in 'YYYY-MM-DD' format
-    """
-    import datetime
-
-    # Parse the date
-    date_obj = datetime.datetime.strptime(date, "%Y-%m-%d")
-
-    # Calculate month angle (2π represents a full year)
-    month_angle = (date_obj.month - 1) * (2 * math.pi / 12)
-
-    # Calculate sine and cosine
-    month_sin = math.sin(month_angle)
-    month_cos = math.cos(month_angle)
-
-    return month_sin, month_cos
-
-# Input model with user-friendly fields
-class UserFriendlyInput(BaseModel):
-    ward: str = Field(..., description="Ward identifier")
-    time_category: str = Field(..., description="Time of day")
-    date: str = Field(..., description="Date in YYYY-MM-DD format")
-    weekend: str = Field(..., description="Is it a weekend?")
+# Input model with the updated fields
+class UserInput(BaseModel):
+    ward: int = Field(..., description="Ward identifier")
+    date_of_occurrence: str = Field(..., description="Date and time of occurrence in 'MM/DD/YYYY HH:MM' format")
     latitude: float = Field(..., description="Latitude coordinate")
     longitude: float = Field(..., description="Longitude coordinate")
 
 # Initialize FastAPI app
-app = FastAPI(title="User-Friendly Offense Prediction Encoder")
+app = FastAPI(title="Offense Prediction Model")
 
-# Load the pre-trained machine learning model
+label_encoder_path = os.path.join(os.path.dirname(__file__), 'ml_logic', 'label_encoder.pkl')
+model_path = os.path.join(os.path.dirname(__file__), 'ml_logic', 'model.pkl')
+
+# Load the LabelEncoder and model
 try:
-    with open('model.pkl', 'rb') as model_file:
-        ml_model = pickle.load(model_file)
-    logger.info("Model successfully loaded")
-except FileNotFoundError:
-    logger.error("model.pkl not found. Please ensure the model file is in the correct directory.")
-    ml_model = None
+    label_encoder_path = os.path.join(os.path.dirname(__file__), 'label_encoder.pkl')
+    model_path = os.path.join(os.path.dirname(__file__), 'model.pkl')
+
+    with open(label_encoder_path, 'rb') as le_file:
+        label_encoder_ward = pickle.load(le_file)
+
+    with open(model_path, 'rb') as model_file:
+        classifier = pickle.load(model_file)
+
+    logger.info("LabelEncoder and Random Forest model successfully loaded")
+
+except FileNotFoundError as e:
+    logger.error(f"File not found: {e}")
+    classifier = label_encoder_ward = None
 except Exception as e:
-    logger.error(f"Error loading model: {e}")
-    ml_model = None
+    logger.error(f"Error loading files: {e}")
+    classifier = label_encoder_ward = None
+
+# Preprocessing function for input data
+def preprocess_input(input_data):
+    # Convert 'DATE OF OCCURRENCE' to datetime format
+    input_data['DATE'] = pd.to_datetime(input_data['DATE OF OCCURRENCE'])
+    input_data['HOUR'] = input_data['DATE'].dt.floor('h')
+
+    # Generate cyclical features (sine and cosine of time and month)
+    input_data['TIME_SIN'] = np.sin(2 * np.pi * input_data['HOUR'].dt.hour / 24)
+    input_data['TIME_COS'] = np.cos(2 * np.pi * input_data['HOUR'].dt.hour / 24)
+    input_data['MONTH_SIN'] = np.sin(2 * np.pi * input_data['HOUR'].dt.month / 12)
+    input_data['MONTH_COS'] = np.cos(2 * np.pi * input_data['HOUR'].dt.month / 12)
+
+    # Add 'DAY_OF_WEEK' feature
+    input_data['DAY_OF_WEEK'] = input_data['HOUR'].dt.dayofweek
+
+    # Add placeholder features (these can be replaced with actual calculations)
+    input_data['CRIME_COUNT_LAG1'] = 0
+    input_data['CRIME_COUNT_LAG24'] = 0
+    input_data['ROLLING_7DAY'] = 0
+    input_data['DISTANCE_TO_POLICE'] = 0
+
+    return input_data
 
 # Prediction endpoint
 @app.post("/predict")
-async def predict_offense(input_data: UserFriendlyInput):
-    if ml_model is None:
-        raise HTTPException(status_code=500, detail="Model not loaded")
+async def predict_offense(input_data: UserInput):
+    if classifier is None or label_encoder_ward is None:
+        raise HTTPException(status_code=500, detail="Model or LabelEncoder not loaded")
 
     try:
-        # Validate and encode inputs
-        time_category = encode_time_category(input_data.time_category)
-        if time_category is None:
-            raise ValueError(f"Invalid time category. Must be one of {list(TIME_CATEGORIES.keys())}")
+        # Convert the input data to a DataFrame
+        input_df = pd.DataFrame({
+            'WARD': [input_data.ward],
+            'DATE OF OCCURRENCE': [input_data.date_of_occurrence],
+            'LATITUDE': [input_data.latitude],
+            'LONGITUDE': [input_data.longitude]
+        })
 
-        weekend = encode_weekend(input_data.weekend)
-        if weekend is None:
-            raise ValueError("Weekend must be 'yes' or 'no'")
+        # Preprocess the input data
+        preprocessed_input = preprocess_input(input_df)
 
-        month_sin, month_cos = encode_month(input_data.date)
+        # Extract the features for prediction
+        X_input = preprocessed_input[['TIME_SIN', 'TIME_COS', 'CRIME_COUNT_LAG1', 'CRIME_COUNT_LAG24', 'ROLLING_7DAY',
+                                      'DISTANCE_TO_POLICE', 'WARD', 'DAY_OF_WEEK', 'MONTH_SIN', 'MONTH_COS']]
 
-        # Prepare input features
-        input_features = [
-            str(input_data.ward),
-            time_category,
-            month_sin,
-            month_cos,
-            weekend,
-            input_data.latitude,
-            input_data.longitude
-        ]
+        # Generate predictions
+        probas = classifier.predict_proba(X_input)
 
-        logger.info(f"Processed input features: {input_features}")
+        # Get the top 5 predictions
+        top_5_idx = np.argsort(probas[0])[-5:][::-1]  # Sort probabilities in descending order
+        top_5_classes = classifier.classes_[top_5_idx]
+        top_5_probabilities = probas[0][top_5_idx]
 
-        # Convert input to numpy array and reshape
-        input_array = np.array(input_features).reshape(1, -1)
-
-        # Make prediction
-        prediction = ml_model.predict(input_array)[0]
-
-        logger.info(f"Prediction successful: {prediction}")
-        return {
-            "offense_prediction": float(prediction),
-            "input_details": {
-                "ward": input_data.ward,
-                "time_category": input_data.time_category,
-                "date": input_data.date,
-                "weekend": input_data.weekend,
-                "latitude": input_data.latitude,
-                "longitude": input_data.longitude
-            }
+        # Map the predicted labels to offense names using the LabelEncoder
+        top_5_crimes = {
+            label_encoder_ward.inverse_transform([top_5_classes[i]])[0]: top_5_probabilities[i]
+            for i in range(5)
         }
+
+        logger.info(f"Top 5 predicted crimes: {top_5_crimes}")
+        return {"Top 5 Crimes": top_5_crimes}
 
     except ValueError as e:
         logger.error(f"Input conversion error: {e}", exc_info=True)
@@ -154,21 +121,6 @@ async def predict_offense(input_data: UserFriendlyInput):
     except Exception as e:
         logger.error(f"Prediction error: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=f"Prediction error: {str(e)}")
-
-# Endpoints for reference
-@app.get("/time-categories")
-async def get_time_categories():
-    return {
-        "categories": list(TIME_CATEGORIES.keys()),
-        "description": "Predefined time categories for input"
-    }
-
-@app.get("/weekend-options")
-async def get_weekend_options():
-    return {
-        "options": ["yes", "no", "y", "n"],
-        "description": "Acceptable weekend input values"
-    }
 
 # Main block to run the server
 if __name__ == "__main__":

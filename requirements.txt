@@ -3,3 +3,4 @@ numpy==2.2.0
 pandas==2.2.3
 pydantic==2.10.3
 uvicorn==0.34.0
+scikit-learn==1.5.2
