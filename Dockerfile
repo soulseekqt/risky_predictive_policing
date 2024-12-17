@@ -7,8 +7,9 @@ WORKDIR /app
 # Copy the entire project into the container
 COPY . /app
 
-# Ensure model.pkl is in the correct location
+# Ensure model.pkl and label_encoder.pkl is in the correct location
 COPY ml_logic/model.pkl /app/ml_logic/model.pkl
+COPY ml_logic/label_encoder.pkl /app/ml_logic/label_encoder.pkl
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
@@ -18,5 +19,3 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Command to run your application
 CMD uvicorn ml_logic.fast:app --host 0.0.0.0 --port $PORT
-
-#need to run with docker run -p 8000:8000 risky_predictive_policing
